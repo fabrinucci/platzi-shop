@@ -8,7 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'standard-with-typescript',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'vite-env.d.ts'],
+  ignorePatterns: ['dist', '*.d.ts', '*.js', '*.cjs', 'vite.config.ts'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
