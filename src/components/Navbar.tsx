@@ -8,27 +8,27 @@ const menu1 = [
   },
   {
     path: '/clothes',
-    name: 'clothes',
+    name: 'Clothes',
     className: ''
   },
   {
     path: '/electronics',
-    name: 'electronics',
+    name: 'Electronics',
     className: ''
   },
   {
     path: '/furnitures',
-    name: 'furnitures',
+    name: 'Furnitures',
     className: ''
   },
   {
     path: '/others',
-    name: 'others',
+    name: 'Others',
     className: ''
   },
   {
     path: '/toys',
-    name: 'toys',
+    name: 'Toys',
     className: ''
   }
 ]
@@ -55,7 +55,7 @@ export const Navbar = () => {
   const activeStyle = 'underline underline-offset-4'
 
   return (
-    <nav className='fixed top-0 z-10 flex w-full items-center justify-between border-b-2 border-gray-400 px-6 py-4'>
+    <nav className='top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
       <ul className='flex items-center gap-4'>
         {menu1.map(({ name, path, className }) => (
           <li key={name}>
