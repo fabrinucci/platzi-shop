@@ -1,5 +1,5 @@
 import { type Product } from '../../types'
-import { useShoppingCart } from '../hooks/useShoppingCart'
+import { useShoppingCart } from '../hooks'
 
 interface Props {
   products: Product[]

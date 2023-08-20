@@ -1,27 +1,25 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import {
-  Clothes,
-  Electronics,
-  Furnitures,
   Home,
+  MensClothes,
+  WomensClothes,
+  Electronics,
+  Jewelery,
   MyAccount,
   MyOrder,
   MyOrders,
   NotFound,
-  Others,
-  SignIn,
-  Toys
+  SignIn
 } from '../pages'
 import { Layout, Navbar } from '../components'
 
 const AppRoutes = () => {
   const routes = useRoutes([
     { path: '/', element: <Home /> },
-    { path: '/clothes', element: <Clothes /> },
+    { path: '/mens-clothes', element: <MensClothes /> },
+    { path: '/womens-clothes', element: <WomensClothes /> },
     { path: '/electronics', element: <Electronics /> },
-    { path: '/furnitures', element: <Furnitures /> },
-    { path: '/toys', element: <Toys /> },
-    { path: '/others', element: <Others /> },
+    { path: '/jewelery', element: <Jewelery /> },
 
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-account', element: <MyAccount /> },

@@ -1,8 +1,12 @@
-import { type Product } from '../../types'
+import { type Categories, type Product } from '../../types'
 
-export const getAllProducts = async (): Promise<Product[] | undefined> => {
+const URL = 'https://fakestoreapi.com/products'
+
+export const getAllProducts = async (
+  category: Categories | null = null
+): Promise<Product[] | undefined> => {
   try {
-    const res = await fetch('https://fakestoreapi.com/products')
+    const res = await fetch(!category ? URL : `${URL}/category/${category}`)
     const data = await res.json()
     return data
   } catch (error) {

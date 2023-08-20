@@ -8,8 +8,13 @@ const menu1 = [
     className: 'font-bold text-xl'
   },
   {
-    path: '/clothes',
-    name: 'Clothes',
+    path: '/mens-clothes',
+    name: "Men's Clothes",
+    className: ''
+  },
+  {
+    path: '/womens-clothes',
+    name: "Women's Clothes",
     className: ''
   },
   {
@@ -18,18 +23,8 @@ const menu1 = [
     className: ''
   },
   {
-    path: '/furnitures',
-    name: 'Furnitures',
-    className: ''
-  },
-  {
-    path: '/others',
-    name: 'Others',
-    className: ''
-  },
-  {
-    path: '/toys',
-    name: 'Toys',
+    path: '/jewelery',
+    name: 'Jewelery',
     className: ''
   }
 ]
