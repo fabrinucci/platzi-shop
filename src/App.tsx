@@ -1,5 +1,10 @@
+import { ShoppingCartProvider } from './context'
 import { MainRouter } from './router/MainRouter'
 
 export const App = () => {
-  return <MainRouter />
+  return (
+    <ShoppingCartProvider>
+      <MainRouter />
+    </ShoppingCartProvider>
+  )
 }

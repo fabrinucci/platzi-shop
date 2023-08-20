@@ -15,7 +15,7 @@ export const Home = () => {
   }, [])
   return (
     <main>
-      <h1 className='text-center text-4xl font-semibold'>Shopi Eccomerce</h1>
+      <h1 className='text-center text-4xl font-semibold'>Shopi Ecco</h1>
       <h3 className='mb-5 mt-8 text-center text-2xl'>Our Products</h3>
       <Cards products={products} />
     </main>

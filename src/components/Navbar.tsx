@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { ShoppingCart } from './'
 
 const menu1 = [
   {
@@ -55,7 +56,7 @@ export const Navbar = () => {
   const activeStyle = 'underline underline-offset-4'
 
   return (
-    <nav className='top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
+    <nav className='fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
       <ul className='flex items-center gap-4'>
         {menu1.map(({ name, path, className }) => (
           <li key={name}>
@@ -82,6 +83,9 @@ export const Navbar = () => {
             </NavLink>
           </li>
         ))}
+        <li>
+          <ShoppingCart />
+        </li>
       </ul>
     </nav>
   )
