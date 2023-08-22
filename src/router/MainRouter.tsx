@@ -11,7 +11,7 @@ import {
   NotFound,
   SignIn
 } from '../pages'
-import { Layout, Navbar } from '../components'
+import { Cart, Layout, Navbar } from '../components'
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -37,6 +37,7 @@ export const MainRouter = () => {
       <Layout>
         <AppRoutes />
       </Layout>
+      <Cart />
     </BrowserRouter>
   )
 }

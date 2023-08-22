@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ShoppingCart } from './'
+import { ShoppingCartButton } from './'
 
 const menu1 = [
   {
@@ -79,7 +79,7 @@ export const Navbar = () => {
           </li>
         ))}
         <li>
-          <ShoppingCart />
+          <ShoppingCartButton />
         </li>
       </ul>
     </nav>

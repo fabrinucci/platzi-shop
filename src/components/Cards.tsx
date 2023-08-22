@@ -1,12 +1,13 @@
 import { type Product } from '../../types'
 import { useShoppingCart } from '../hooks'
+import { PlusIcon } from '@heroicons/react/24/outline'
 
 interface Props {
   products: Product[]
 }
 
 export const Cards = ({ products }: Props) => {
-  const { count, setCount } = useShoppingCart()
+  const { count, increaseCount } = useShoppingCart()
 
   return (
     <section className='grid grid-cols-1 place-items-center gap-4 px-10 sm:grid-cols-auto-fit sm:place-items-stretch'>
@@ -21,18 +22,14 @@ export const Cards = ({ products }: Props) => {
               <span className='absolute bottom-[12px] left-2 rounded-md bg-blue-600 p-1 text-sm font-bold text-slate-200 shadow-md shadow-[#7191cc]'>
                 {category}
               </span>
-              <img
-                className='h-48 w-full rounded-md'
-                src={image}
-                alt={title}
-              ></img>
+              <img className='h-48 w-full rounded-md' src={image} alt={title} />
               <div
                 onClick={() => {
-                  setCount(count + 1)
+                  increaseCount(count)
                 }}
                 className='absolute right-2 top-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-600 p-1 font-bold text-slate-200'
               >
-                +
+                <PlusIcon className='text-slate-50' />
               </div>
             </figure>
 
