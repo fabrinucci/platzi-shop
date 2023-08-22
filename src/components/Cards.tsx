@@ -15,14 +15,14 @@ export const Cards = ({ products }: Props) => {
         return (
           <article
             key={id}
-            className='max-w-[270px] rounded-sm border border-gray-400 p-6'
+            className='max-w-[250px] rounded-sm border border-gray-400 p-6'
           >
             <figure className='relative'>
-              <span className='absolute bottom-[12px] left-0 rounded-md bg-blue-600 p-1 text-sm font-bold text-slate-200 shadow-md shadow-[#7191cc]'>
+              <span className='absolute bottom-[12px] left-2 rounded-md bg-blue-600 p-1 text-sm font-bold text-slate-200 shadow-md shadow-[#7191cc]'>
                 {category}
               </span>
               <img
-                className='h-48 w-full rounded-md bg-cover bg-no-repeat'
+                className='h-48 w-full rounded-md'
                 src={image}
                 alt={title}
               ></img>
@@ -30,7 +30,7 @@ export const Cards = ({ products }: Props) => {
                 onClick={() => {
                   setCount(count + 1)
                 }}
-                className='absolute right-0 top-0 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-600 p-1 font-bold text-slate-200'
+                className='absolute right-2 top-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-600 p-1 font-bold text-slate-200'
               >
                 +
               </div>

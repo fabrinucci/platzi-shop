@@ -4,12 +4,14 @@ import { type Categories, type Product } from '../../types'
 
 export const useProducts = (category: Categories | null = null) => {
   const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const getProducts = async () => {
       if (category) {
         const products = await getAllProducts(category)
         if (!products) return
+
         setProducts(products)
         return
       }
@@ -18,8 +20,10 @@ export const useProducts = (category: Categories | null = null) => {
       if (!products) return
       setProducts(products)
     }
-    void getProducts()
+    void getProducts().then(() => {
+      setLoading(false)
+    })
   }, [])
 
-  return products
+  return { products, loading }
 }
