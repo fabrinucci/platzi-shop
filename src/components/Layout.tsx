@@ -2,13 +2,14 @@ import { type ReactNode } from 'react'
 
 interface Props {
   children: ReactNode
+  title?: string
 }
 
-export const Layout = ({ children }: Props) => {
+export const Layout = ({ children, title = 'Shopi Ecco' }: Props) => {
   return (
-    <div className='flex flex-col bg-slate-100 px-6 py-20'>
-      <h1 className='text-center text-4xl font-semibold'>Shopi Ecco</h1>
+    <main className='flex flex-col bg-slate-100 px-6 py-20'>
+      <h1 className='text-center text-4xl font-semibold'>{title}</h1>
       {children}
-    </div>
+    </main>
   )
 }

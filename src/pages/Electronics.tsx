@@ -5,9 +5,9 @@ import { useProducts } from '../hooks'
 export const Electronics = () => {
   const { products, loading } = useProducts(Categories.Electronics)
   return (
-    <main>
+    <section>
       <h3 className='mb-5 mt-8 text-center text-2xl'>Electronics</h3>
       {loading ? <SkeletonCards /> : <Cards products={products} />}
-    </main>
+    </section>
   )
 }

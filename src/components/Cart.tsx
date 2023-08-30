@@ -1,11 +1,11 @@
 import { XMarkIcon } from '@heroicons/react/20/solid'
-import { XCircleIcon } from '@heroicons/react/24/outline'
 import { useShoppingCart } from '../hooks'
 import { totalPrice } from '../utils'
+import { Checkout, OrderCard } from '.'
+import { Link } from 'react-router-dom'
 
 export const Cart = () => {
-  const { count, cart, isOpenCart, closeCart, removeFromCart } =
-    useShoppingCart()
+  const { count, cart, isOpenCart, closeCart } = useShoppingCart()
 
   return (
     <aside
@@ -27,32 +27,9 @@ export const Cart = () => {
       ) : (
         <div>
           <div className='mt-4'>
-            {cart.map((product) => {
-              const { id, image, price, title, quantity } = product
-              return (
-                <article
-                  key={id}
-                  className='flex w-full items-start gap-4 border-b border-gray-500 py-4'
-                >
-                  <figure>
-                    <img className='h-16 w-16' src={image} alt={title} />
-                  </figure>
-                  <h4>{title.slice(0, 16)}</h4>
-                  <p className='font-semibold'>${price * quantity}</p>
-                  <div className='flex gap-1'>
-                    <h4>qty:</h4>
-                    <p>{quantity}</p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      removeFromCart(product)
-                    }}
-                  >
-                    <XCircleIcon className='w-6 text-gray-500' />
-                  </button>
-                </article>
-              )
-            })}
+            {cart.map((product) => (
+              <OrderCard key={product.id} product={product} type='Cart' />
+            ))}
           </div>
 
           <div className='mt-4 flex flex-col gap-2'>
@@ -65,6 +42,9 @@ export const Cart = () => {
               <p>{count}</p>
             </div>
           </div>
+          <Link to='/my-orders/last'>
+            <Checkout className='mt-5' />
+          </Link>
         </div>
       )}
     </aside>

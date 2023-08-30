@@ -1,5 +1,5 @@
 import { createContext, useState, type ReactNode } from 'react'
-import { type ProductCart, type Product } from '../../types'
+import { type ProductCart, type Product, type Order } from '../../types'
 
 interface ContextProps {
   children: ReactNode
@@ -18,7 +18,11 @@ interface valueProps {
   cart: ProductCart[]
   addToCart: (product: Product) => void
   removeFromCart: (product: ProductCart) => void
+  removeAllFromCart: () => void
   quantity: number
+  orders: Order[]
+  addOrder: (orderToAdd: Order) => void
+  selectedOrder: (orderId: string) => Order | undefined
 }
 
 export const ShoppingCartContext = createContext<valueProps | null>(null)
@@ -31,6 +35,7 @@ export const ShoppingCartProvider = ({ children }: ContextProps) => {
   const [productToShow, setProductToShow] = useState<Product | {}>({})
   const [cart, setCart] = useState<ProductCart[]>([])
   const [quantity, setQuantity] = useState<number>(0)
+  const [orders, setOrders] = useState<Order[]>([])
 
   const increaseCount = (operation: number) => {
     setCount(count + operation)
@@ -85,6 +90,22 @@ export const ShoppingCartProvider = ({ children }: ContextProps) => {
     decreaseCount(product.quantity)
   }
 
+  const removeAllFromCart = () => {
+    setCart([])
+    decreaseCount(count)
+  }
+
+  const addOrder = (orderToAdd: Order) => {
+    setOrders([...orders, orderToAdd])
+  }
+
+  const selectedOrder = (orderId: string) => {
+    if (orderId === 'last') {
+      return orders.find((_, index) => index === orders.length - 1)
+    }
+    return orders.find((order) => order?.id === orderId)
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -92,15 +113,19 @@ export const ShoppingCartProvider = ({ children }: ContextProps) => {
         isOpenCart,
         isOpenDetail,
         productToShow,
-        cart,
         quantity,
+        cart,
+        orders,
         openCart,
         closeCart,
         openDetail,
         closeDetail,
         updateProductToShow,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        removeAllFromCart,
+        addOrder,
+        selectedOrder
       }}
     >
       {children}

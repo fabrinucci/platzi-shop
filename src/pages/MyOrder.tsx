@@ -1,3 +1,40 @@
+import { Link, useParams } from 'react-router-dom'
+import { OrderCard } from '../components'
+import { useShoppingCart } from '../hooks'
+import { ArrowLeftCircleIcon } from '@heroicons/react/24/outline'
+
 export const MyOrder = () => {
-  return <main>MyOrder</main>
+  const { selectedOrder } = useShoppingCart()
+
+  const params = useParams()
+  const orderId = params.id
+
+  const order = selectedOrder(orderId!)
+
+  return (
+    <section className='relative m-auto mt-8 w-[360px]'>
+      <div className='mb-4'>
+        <Link to='/my-orders'>
+          <ArrowLeftCircleIcon className='absolute top-[5px] w-6' />
+        </Link>
+        <h3 className='text-center text-2xl'>My order</h3>
+      </div>
+      <div className='flex flex-col items-center justify-center'>
+        {order?.products.map((product) => (
+          <OrderCard key={product.id} product={product} type='Order' />
+        ))}
+      </div>
+
+      <div className='mt-6 flex items-center justify-center gap-6'>
+        <div className='flex items-center justify-center gap-2'>
+          <h4 className='text-xl font-semibold'>SubTotal:</h4>
+          <p className='text-lg'>${order?.totalPrice}</p>
+        </div>
+        <div className='flex items-center justify-center gap-2'>
+          <h4 className='text-xl font-semibold'>Quantity:</h4>
+          <p className='text-lg'>{order?.totalProducts}</p>
+        </div>
+      </div>
+    </section>
+  )
 }
