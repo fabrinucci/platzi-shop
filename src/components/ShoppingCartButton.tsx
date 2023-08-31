@@ -1,12 +1,20 @@
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { useShoppingCart } from '../hooks/useShoppingCart'
+import { useShopi } from '../hooks/useShopi'
 
 export const ShoppingCartButton = () => {
-  const { count, isOpenCart, openCart, closeCart } = useShoppingCart()
+  const { count, isOpenCart, isOpenDetail, closeDetail, openCart, closeCart } =
+    useShopi()
+
+  const openCartAndCloseDetail = () => {
+    if (isOpenDetail) {
+      closeDetail()
+    }
+    openCart()
+  }
 
   return (
     <button
-      onClick={isOpenCart ? closeCart : openCart}
+      onClick={isOpenCart ? closeCart : openCartAndCloseDetail}
       className='relative cursor-pointer'
     >
       <ShoppingCartIcon className='h-6' />

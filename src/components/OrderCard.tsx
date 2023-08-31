@@ -1,5 +1,5 @@
 import { XCircleIcon } from '@heroicons/react/24/outline'
-import { useShoppingCart } from '../hooks'
+import { useShopi } from '../hooks'
 import { type ProductCart } from '../../types'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 export const OrderCard = ({ product, type }: Props) => {
   const { id, image, price, quantity, title } = product
-  const { removeFromCart } = useShoppingCart()
+  const { removeFromCart } = useShopi()
 
   return (
     <article

@@ -1,13 +1,13 @@
 import { v4 as uuid } from 'uuid'
 import { type Order } from '../../types'
-import { useShoppingCart } from '../hooks'
+import { useShopi } from '../hooks'
 import { getDate, totalPrice, totalQuantity } from '../utils/index'
 
 interface Props {
   className?: string
 }
 export const Checkout = ({ className }: Props) => {
-  const { cart, addOrder, removeAllFromCart, closeCart } = useShoppingCart()
+  const { cart, addOrder, removeAllFromCart, closeCart } = useShopi()
 
   const handleOrder = () => {
     const date = getDate()

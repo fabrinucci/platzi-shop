@@ -1,11 +1,11 @@
 import { XMarkIcon } from '@heroicons/react/20/solid'
-import { useShoppingCart } from '../hooks'
+import { useShopi } from '../hooks'
 import { totalPrice } from '../utils'
 import { Checkout, OrderCard } from '.'
 import { Link } from 'react-router-dom'
 
 export const Cart = () => {
-  const { count, cart, isOpenCart, closeCart } = useShoppingCart()
+  const { count, cart, isOpenCart, closeCart } = useShopi()
 
   return (
     <aside

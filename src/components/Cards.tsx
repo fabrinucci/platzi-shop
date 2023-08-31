@@ -1,5 +1,5 @@
 import { type Product } from '../../types'
-import { useShoppingCart } from '../hooks'
+import { useShopi } from '../hooks'
 import { PlusIcon } from '@heroicons/react/24/outline'
 
 interface Props {
@@ -7,9 +7,13 @@ interface Props {
 }
 
 export const Cards = ({ products }: Props) => {
-  const { openDetail, updateProductToShow, addToCart } = useShoppingCart()
+  const { isOpenCart, closeCart, openDetail, updateProductToShow, addToCart } =
+    useShopi()
 
   const showProduct = (product: Product) => {
+    if (isOpenCart) {
+      closeCart()
+    }
     openDetail()
     updateProductToShow(product)
   }

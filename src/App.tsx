@@ -1,10 +1,10 @@
-import { ShoppingCartProvider } from './context'
+import { ShopiProvider } from './context'
 import { MainRouter } from './router/MainRouter'
 
 export const App = () => {
   return (
-    <ShoppingCartProvider>
+    <ShopiProvider>
       <MainRouter />
-    </ShoppingCartProvider>
+    </ShopiProvider>
   )
 }

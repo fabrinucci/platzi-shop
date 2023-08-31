@@ -1,10 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 import { OrderCard } from '../components'
-import { useShoppingCart } from '../hooks'
+import { useShopi } from '../hooks'
 import { ArrowLeftCircleIcon } from '@heroicons/react/24/outline'
 
 export const MyOrder = () => {
-  const { selectedOrder } = useShoppingCart()
+  const { selectedOrder } = useShopi()
 
   const params = useParams()
   const orderId = params.id

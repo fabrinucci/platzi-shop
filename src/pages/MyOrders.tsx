@@ -4,10 +4,10 @@ import {
   CalendarIcon,
   ShoppingBagIcon
 } from '@heroicons/react/24/outline'
-import { useShoppingCart } from '../hooks'
+import { useShopi } from '../hooks'
 
 export const MyOrders = () => {
-  const { orders } = useShoppingCart()
+  const { orders } = useShopi()
   const noOrders = orders.length === 0
 
   return (

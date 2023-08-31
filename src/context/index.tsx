@@ -1,11 +1,12 @@
-import { createContext, useState, type ReactNode } from 'react'
+import { createContext, type ReactNode } from 'react'
+import { useCart, useDetails, useOrders } from '../hooks'
 import { type ProductCart, type Product, type Order } from '../../types'
 
 interface ContextProps {
   children: ReactNode
 }
 
-interface valueProps {
+export interface ShopiProps {
   count: number
   isOpenCart: boolean
   openCart: () => void
@@ -25,110 +26,22 @@ interface valueProps {
   selectedOrder: (orderId: string) => Order | undefined
 }
 
-export const ShoppingCartContext = createContext<valueProps | null>(null)
+export const ShopiContext = createContext<ShopiProps | null>(null)
 
-export const ShoppingCartProvider = ({ children }: ContextProps) => {
-  const [count, setCount] = useState<number>(0)
-  const [isOpenCart, setIsOpenCart] = useState<boolean>(false)
-  const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false)
-
-  const [productToShow, setProductToShow] = useState<Product | {}>({})
-  const [cart, setCart] = useState<ProductCart[]>([])
-  const [quantity, setQuantity] = useState<number>(0)
-  const [orders, setOrders] = useState<Order[]>([])
-
-  const increaseCount = (operation: number) => {
-    setCount(count + operation)
-  }
-  const decreaseCount = (operation: number) => {
-    setCount(count - operation)
-  }
-
-  const openCart = () => {
-    if (isOpenDetail) {
-      setIsOpenDetail(false)
-    }
-    setIsOpenCart(true)
-  }
-  const closeCart = () => {
-    setIsOpenCart(false)
-  }
-
-  const openDetail = () => {
-    if (isOpenCart) {
-      setIsOpenCart(false)
-    }
-    setIsOpenDetail(true)
-  }
-  const closeDetail = () => {
-    setIsOpenDetail(false)
-  }
-
-  const updateProductToShow = (product: Product) => {
-    setProductToShow(product)
-  }
-
-  const addToCart = (product: Product) => {
-    const productInCart = cart.find((item) => item.id === product.id)
-    if (productInCart) {
-      setQuantity(productInCart.quantity++)
-      increaseCount(1)
-      return
-    }
-
-    const newProduct = {
-      ...product,
-      quantity: 1
-    }
-    setCart([...cart, newProduct])
-    increaseCount(1)
-  }
-
-  const removeFromCart = (product: ProductCart) => {
-    const newCart = cart.filter((item) => item.id !== product.id)
-    setCart(newCart)
-    decreaseCount(product.quantity)
-  }
-
-  const removeAllFromCart = () => {
-    setCart([])
-    decreaseCount(count)
-  }
-
-  const addOrder = (orderToAdd: Order) => {
-    setOrders([...orders, orderToAdd])
-  }
-
-  const selectedOrder = (orderId: string) => {
-    if (orderId === 'last') {
-      return orders.find((_, index) => index === orders.length - 1)
-    }
-    return orders.find((order) => order?.id === orderId)
-  }
+export const ShopiProvider = ({ children }: ContextProps) => {
+  const cartContext = useCart()
+  const ordersContext = useOrders()
+  const detailsContext = useDetails()
 
   return (
-    <ShoppingCartContext.Provider
+    <ShopiContext.Provider
       value={{
-        count,
-        isOpenCart,
-        isOpenDetail,
-        productToShow,
-        quantity,
-        cart,
-        orders,
-        openCart,
-        closeCart,
-        openDetail,
-        closeDetail,
-        updateProductToShow,
-        addToCart,
-        removeFromCart,
-        removeAllFromCart,
-        addOrder,
-        selectedOrder
+        ...cartContext,
+        ...ordersContext,
+        ...detailsContext
       }}
     >
       {children}
-    </ShoppingCartContext.Provider>
+    </ShopiContext.Provider>
   )
 }

@@ -1,9 +1,9 @@
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { useShoppingCart } from '../hooks'
+import { useShopi } from '../hooks'
 import { type Product } from '../../types'
 
 export const ProductDetail = () => {
-  const { isOpenDetail, closeDetail, productToShow } = useShoppingCart()
+  const { isOpenDetail, closeDetail, productToShow } = useShopi()
   const { description, image, price, title } = productToShow as Product
 
   return (

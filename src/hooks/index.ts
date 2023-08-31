@@ -1,2 +1,5 @@
-export * from './useShoppingCart'
+export * from './useCart'
+export * from './useDetails'
+export * from './useOrders'
+export * from './useShopi'
 export * from './useProducts'
