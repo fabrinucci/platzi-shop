@@ -1,31 +1,45 @@
 import { NavLink } from 'react-router-dom'
 import { ShoppingCartButton } from './'
+import { useShopi } from '../hooks'
+import { Categories } from '../../types'
 
-const menu1 = [
+interface MenuProps {
+  path: string
+  name: string
+  className: string
+  category?: Categories | null
+}
+
+const menu1: MenuProps[] = [
   {
     path: '/',
     name: 'Shopi',
-    className: 'font-bold text-xl'
+    className: 'font-bold text-xl',
+    category: null
   },
   {
-    path: '/mens-clothes',
+    path: '/category/mens-clothes',
     name: "Men's Clothes",
-    className: ''
+    className: '',
+    category: Categories.MensClothing
   },
   {
-    path: '/womens-clothes',
+    path: '/category/womens-clothes',
     name: "Women's Clothes",
-    className: ''
+    className: '',
+    category: Categories.WomensClothing
   },
   {
-    path: '/electronics',
+    path: '/category/electronics',
     name: 'Electronics',
-    className: ''
+    className: '',
+    category: Categories.Electronics
   },
   {
-    path: '/jewelery',
+    path: '/category/jewelery',
     name: 'Jewelery',
-    className: ''
+    className: '',
+    category: Categories.Jewelery
   }
 ]
 
@@ -48,14 +62,18 @@ const menu2 = [
 ]
 
 export const Navbar = () => {
+  const { selectCategory } = useShopi()
   const activeStyle = 'underline underline-offset-4'
 
   return (
     <nav className='fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
       <ul className='flex items-center gap-4'>
-        {menu1.map(({ name, path, className }) => (
+        {menu1.map(({ name, path, className, category }) => (
           <li key={name}>
             <NavLink
+              onClick={() => {
+                selectCategory(category!)
+              }}
               to={path}
               className={({ isActive }) =>
                 isActive && name !== 'Shopi' ? activeStyle : ''

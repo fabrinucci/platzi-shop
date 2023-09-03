@@ -1,6 +1,11 @@
-import { createContext, type ReactNode } from 'react'
-import { useCart, useDetails, useOrders } from '../hooks'
-import { type ProductCart, type Product, type Order } from '../../types'
+import { createContext, useState, type ReactNode } from 'react'
+import { useCart, useDetails, useOrders, useProducts } from '../hooks'
+import {
+  type ProductCart,
+  type Product,
+  type Order,
+  type Categories
+} from '../../types'
 
 interface ContextProps {
   children: ReactNode
@@ -9,36 +14,54 @@ interface ContextProps {
 export interface ShopiProps {
   count: number
   isOpenCart: boolean
+  isOpenDetail: boolean
+  productToShow: Product | {}
+  cart: ProductCart[]
+  quantity: number
+  orders: Order[]
   openCart: () => void
   closeCart: () => void
-  isOpenDetail: boolean
   openDetail: () => void
   closeDetail: () => void
-  productToShow: Product | {}
   updateProductToShow: (product: Product) => void
-  cart: ProductCart[]
   addToCart: (product: Product) => void
   removeFromCart: (product: ProductCart) => void
   removeAllFromCart: () => void
-  quantity: number
-  orders: Order[]
   addOrder: (orderToAdd: Order) => void
   selectedOrder: (orderId: string) => Order | undefined
+  products: Product[]
+  loading: boolean
+  filteredProducts: Product[]
+  searchByTitle: string
+  updateSearchTitle: (value: React.SetStateAction<string>) => void
+  selectCategory: (category: Categories | null) => void
+  clearSearchTitle: () => void
+  currentPathname: string
+  updatePathname: (pathname: string) => void
 }
 
 export const ShopiContext = createContext<ShopiProps | null>(null)
 
 export const ShopiProvider = ({ children }: ContextProps) => {
+  const [currentPathname, setCurrentPathname] = useState(location.pathname)
+  const updatePathname = (pathname: string) => {
+    setCurrentPathname(pathname)
+  }
+
   const cartContext = useCart()
   const ordersContext = useOrders()
   const detailsContext = useDetails()
+  const productsContext = useProducts()
 
   return (
     <ShopiContext.Provider
       value={{
         ...cartContext,
         ...ordersContext,
-        ...detailsContext
+        ...detailsContext,
+        ...productsContext,
+        currentPathname,
+        updatePathname
       }}
     >
       {children}

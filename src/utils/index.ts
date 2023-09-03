@@ -1,4 +1,6 @@
+import { useEffect } from 'react'
 import { type ProductCart } from '../../types'
+import { type Location, useLocation } from 'react-router-dom'
 
 export const totalPrice = (products: ProductCart[]) => {
   const price = products.reduce(
@@ -20,4 +22,12 @@ export const getDate = () => {
 
   const date = `${month}/${day}/${year}`
   return date
+}
+
+export const useLocationEffect = (callback: (location: Location) => any) => {
+  const location = useLocation()
+
+  useEffect(() => {
+    callback(location)
+  }, [location, callback])
 }
