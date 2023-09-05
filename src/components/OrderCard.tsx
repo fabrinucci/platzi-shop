@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const OrderCard = ({ product, type }: Props) => {
-  const { id, image, price, quantity, title } = product
+  const { id, images, price, quantity, title } = product
   const { removeFromCart } = useShopi()
 
   return (
@@ -21,7 +21,7 @@ export const OrderCard = ({ product, type }: Props) => {
       } flex w-full gap-4 border-b border-gray-500 py-4`}
     >
       <figure>
-        <img className='h-16 w-16' src={image} alt={title} />
+        <img className='h-16 w-16' src={images[0]} alt={title} />
       </figure>
       <h4>{title?.slice(0, 16)}</h4>
       <p className='font-semibold'>

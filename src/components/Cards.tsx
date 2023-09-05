@@ -19,9 +19,9 @@ export const Cards = ({ products }: Props) => {
   }
 
   return (
-    <section className='grid grid-cols-1 place-items-center gap-4 px-10 sm:grid-cols-auto-fit sm:place-items-stretch'>
+    <section className='sm:grid-cols-auto-fill grid grid-cols-1 place-items-center gap-4 px-10 sm:place-items-stretch'>
       {products?.map((item) => {
-        const { id, category, image, price, title } = item
+        const { id, category, images, price, title } = item
         return (
           <article
             key={id}
@@ -35,8 +35,8 @@ export const Cards = ({ products }: Props) => {
                 onClick={() => {
                   showProduct(item)
                 }}
-                className='h-48 w-full cursor-pointer rounded-md'
-                src={image}
+                className='h-40 w-full cursor-pointer rounded-md'
+                src={images[0]}
                 alt={title}
               />
               <div

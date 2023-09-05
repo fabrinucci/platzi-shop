@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom'
 import { ShoppingCartButton } from './'
-import { useShopi } from '../hooks'
 import { Categories } from '../../types'
 
 interface MenuProps {
@@ -14,32 +13,32 @@ const menu1: MenuProps[] = [
   {
     path: '/',
     name: 'Shopi',
-    className: 'font-bold text-xl',
-    category: null
+    className: 'font-bold text-xl'
   },
   {
-    path: '/category/mens-clothes',
-    name: "Men's Clothes",
-    className: '',
-    category: Categories.MensClothing
+    path: `/category/${Categories.Smartphones}`,
+    name: 'Smartphones',
+    className: ''
   },
   {
-    path: '/category/womens-clothes',
-    name: "Women's Clothes",
-    className: '',
-    category: Categories.WomensClothing
+    path: `/category/${Categories.Fragrances}`,
+    name: 'Fragrances',
+    className: ''
   },
   {
-    path: '/category/electronics',
-    name: 'Electronics',
-    className: '',
-    category: Categories.Electronics
+    path: `/category/${Categories.Laptops}`,
+    name: 'Laptops',
+    className: ''
   },
   {
-    path: '/category/jewelery',
-    name: 'Jewelery',
-    className: '',
-    category: Categories.Jewelery
+    path: `/category/${Categories.MensShirts}`,
+    name: 'Mens Shirts',
+    className: ''
+  },
+  {
+    path: `/category/${Categories.WomensDresses}`,
+    name: 'Womens Dresses',
+    className: ''
   }
 ]
 
@@ -62,18 +61,14 @@ const menu2 = [
 ]
 
 export const Navbar = () => {
-  const { selectCategory } = useShopi()
   const activeStyle = 'underline underline-offset-4'
 
   return (
     <nav className='fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
       <ul className='flex items-center gap-4'>
-        {menu1.map(({ name, path, className, category }) => (
+        {menu1.map(({ name, path, className }) => (
           <li key={name}>
             <NavLink
-              onClick={() => {
-                selectCategory(category!)
-              }}
               to={path}
               className={({ isActive }) =>
                 isActive && name !== 'Shopi' ? activeStyle : ''

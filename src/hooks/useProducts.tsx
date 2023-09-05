@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getAllProducts } from '../services'
+import { getAllProducts, getProductsByCategory } from '../services'
 import { type Categories, type Product } from '../../types'
 
 export const useProducts = () => {
@@ -8,9 +8,9 @@ export const useProducts = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
 
   const [searchByTitle, setSearchByTitle] = useState<string>('')
-  const [category, setCategory] = useState<Categories | null>(null)
+  const [category, setCategory] = useState<Categories | 'all'>('all')
 
-  const selectCategory = (category: Categories | null) => {
+  const selectCategory = (category: Categories | 'all') => {
     setCategory(category)
   }
 
@@ -32,48 +32,35 @@ export const useProducts = () => {
     )
   }
 
-  const filteredProductsByCategory = (
-    products: Product[],
-    category: Categories
-  ) => {
-    return products.filter(
-      (product) => product?.category.toLowerCase() === category.toLowerCase()
-    )
-  }
-
   useEffect(() => {
-    if (category) {
-      setFilteredProducts(filteredProductsByCategory(products, category))
-    }
     if (searchByTitle.length > 0) {
       setFilteredProducts(filteredProductsByTitle(products, searchByTitle))
     }
 
-    if (category && searchByTitle.length > 0) {
-      setFilteredProducts(
-        filteredProductsByCategory(products, category).filter((product) => {
-          return product?.title
-            .toLowerCase()
-            .includes(searchByTitle.toLowerCase())
-        })
-      )
-    }
-
-    if (!category && searchByTitle.length === 0) {
+    if (searchByTitle.length === 0) {
       setFilteredProducts(products)
     }
-  }, [products, category, searchByTitle])
+  }, [products, searchByTitle])
 
   useEffect(() => {
     const getProducts = async () => {
-      const products = await getAllProducts()
-      if (!products) return
-      setProducts(products)
+      if (category === 'all') {
+        const data = await getAllProducts()
+        const products = data?.products
+        if (!products) return
+        setProducts(products)
+      } else {
+        const data = await getProductsByCategory(category)
+        const products = data?.products
+        if (!products) return
+        setProducts(products)
+      }
     }
+
     void getProducts().then(() => {
       setLoading(false)
     })
-  }, [])
+  }, [category])
 
   return {
     products,
@@ -82,6 +69,7 @@ export const useProducts = () => {
     filteredProducts,
     updateSearchTitle,
     selectCategory,
-    clearSearchTitle
+    clearSearchTitle,
+    category
   }
 }

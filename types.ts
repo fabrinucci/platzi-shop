@@ -1,11 +1,22 @@
+export interface Products {
+  products: Product[]
+  total: number
+  skip: number
+  limit: number
+}
+
 export interface Product {
   id: number
   title: string
-  price: number
-  category: Categories
   description: string
-  image: string
-  rating: Rating
+  price: number
+  discountPercentage: number
+  rating: number
+  stock: number
+  brand: string
+  category: Categories
+  thumbnail: string
+  images: string[]
 }
 
 export interface ProductCart extends Product {
@@ -21,10 +32,26 @@ export interface Order {
 }
 
 export enum Categories {
-  Electronics = 'electronics',
-  Jewelery = 'jewelery',
-  MensClothing = "men's clothing",
-  WomensClothing = "women's clothing"
+  Smartphones = 'smartphones',
+  Laptops = 'laptops',
+  Fragrances = 'fragrances',
+  Skincare = 'skincare',
+  Groceries = 'groceries',
+  HomeDecoration = 'home-decoration',
+  Furniture = 'furniture',
+  Tops = 'tops',
+  WomensDresses = 'womens-dresses',
+  WomensShoes = 'womens-shoes',
+  MensShirts = 'mens-shirts',
+  MensShoes = 'mens-shoes',
+  MensWatches = 'mens-watches',
+  WomensWatches = 'womens-watches',
+  WomensBags = 'womens-bags',
+  WomensJewellery = 'womens-jewellery',
+  Sunglasses = 'sunglasses',
+  Automotive = 'automotive',
+  Motorcycle = 'motorcycle',
+  Lightin = 'lighting'
 }
 
 export interface Rating {

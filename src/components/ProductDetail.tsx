@@ -4,8 +4,7 @@ import { type Product } from '../../types'
 
 export const ProductDetail = () => {
   const { isOpenDetail, closeDetail, productToShow } = useShopi()
-  const { description, image, price, title } = productToShow as Product
-
+  const { description, price, title, images } = productToShow as Product
   return (
     <aside
       className={`${
@@ -25,7 +24,11 @@ export const ProductDetail = () => {
           <h5 className='text-lg'>{title}</h5>
         </div>
         <figure>
-          <img className='w-full' src={image} alt={title} />
+          {!images ? (
+            <div className='h-[48px] rounded-md bg-slate-400'></div>
+          ) : (
+            <img className='w-full' src={images[0]} alt={title} />
+          )}
         </figure>
 
         <p className='mt-2'>{description}</p>

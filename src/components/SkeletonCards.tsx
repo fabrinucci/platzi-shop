@@ -1,6 +1,6 @@
 export const SkeletonCards = () => {
   return (
-    <div className='grid grid-cols-1 place-items-center gap-4 px-10 sm:grid-cols-auto-fit sm:place-items-stretch'>
+    <div className='sm:grid-cols-auto-fill grid grid-cols-1 place-items-center gap-4 px-10 sm:place-items-stretch'>
       {Array.from({ length: 10 }).map((_, index) => (
         <div
           key={index}

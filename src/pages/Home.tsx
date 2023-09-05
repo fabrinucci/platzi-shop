@@ -1,10 +1,24 @@
+import { useParams } from 'react-router-dom'
 import { Cards, SearchBar } from '../components'
 import { SkeletonCards } from '../components/SkeletonCards'
 import { useShopi } from '../hooks'
+import { useEffect } from 'react'
+import { type Categories } from '../../types'
 
 export const Home = () => {
-  const { filteredProducts, loading, searchByTitle } = useShopi()
-  // console.log(filteredProducts)
+  const { filteredProducts, loading, searchByTitle, selectCategory, category } =
+    useShopi()
+  const params = useParams()
+
+  console.log(category)
+
+  useEffect(() => {
+    if (typeof params.category === 'undefined') {
+      selectCategory('all')
+      return
+    }
+    selectCategory(params.category as Categories)
+  }, [params.category])
 
   return (
     <section>

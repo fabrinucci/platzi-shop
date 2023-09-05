@@ -34,10 +34,11 @@ export interface ShopiProps {
   filteredProducts: Product[]
   searchByTitle: string
   updateSearchTitle: (value: React.SetStateAction<string>) => void
-  selectCategory: (category: Categories | null) => void
+  selectCategory: (category: Categories | 'all') => void
   clearSearchTitle: () => void
   currentPathname: string
   updatePathname: (pathname: string) => void
+  category: Categories | 'all'
 }
 
 export const ShopiContext = createContext<ShopiProps | null>(null)
