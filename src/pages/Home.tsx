@@ -1,24 +1,27 @@
-import { useParams } from 'react-router-dom'
 import { Cards, SearchBar } from '../components'
 import { SkeletonCards } from '../components/SkeletonCards'
 import { useShopi } from '../hooks'
 import { useEffect } from 'react'
 import { type Categories } from '../../types'
+import { useLocation } from 'react-router-dom'
 
 export const Home = () => {
-  const { filteredProducts, loading, searchByTitle, selectCategory, category } =
+  const { filteredProducts, loading, searchByTitle, selectCategory } =
     useShopi()
-  const params = useParams()
 
-  console.log(category)
+  const location = useLocation()
+  let path = location.pathname
+  if (path.length > 1) {
+    path = location.pathname.substring(10)
+  }
 
   useEffect(() => {
-    if (typeof params.category === 'undefined') {
+    if (path.length === 1) {
       selectCategory('all')
       return
     }
-    selectCategory(params.category as Categories)
-  }, [params.category])
+    selectCategory(path as Categories)
+  }, [path])
 
   return (
     <section>
