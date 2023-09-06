@@ -36,8 +36,8 @@ const menu1: MenuProps[] = [
     className: ''
   },
   {
-    path: `/category/${Categories.WomensDresses}`,
-    name: 'Womens Dresses',
+    path: `/category/${Categories.Tops}`,
+    name: 'Tops',
     className: ''
   }
 ]

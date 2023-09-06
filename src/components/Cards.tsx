@@ -19,7 +19,7 @@ export const Cards = ({ products }: Props) => {
   }
 
   return (
-    <section className='sm:grid-cols-auto-fill grid grid-cols-1 place-items-center gap-4 px-10 sm:place-items-stretch'>
+    <section className='grid grid-cols-1 place-items-center gap-4 px-10 sm:grid-cols-auto-fill sm:place-items-stretch'>
       {products?.map((item) => {
         const { id, category, images, price, title } = item
         return (

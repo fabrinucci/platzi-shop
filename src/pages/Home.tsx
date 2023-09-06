@@ -25,7 +25,9 @@ export const Home = () => {
 
   return (
     <section>
-      <SearchBar />
+      <div className='mt-6 flex items-center justify-center'>
+        <SearchBar />
+      </div>
       <h3 className='mb-5 mt-8 text-center text-2xl'>Our Special Products</h3>
       {loading && <SkeletonCards />}
 
