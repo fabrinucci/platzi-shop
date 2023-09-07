@@ -12,8 +12,8 @@ interface MenuProps {
 const menu1: MenuProps[] = [
   {
     path: '/',
-    name: 'Shopi',
-    className: 'font-bold text-xl'
+    name: 'All',
+    className: 'font-semibold text-xl'
   },
   {
     path: `/category/${Categories.Smartphones}`,
@@ -66,13 +66,19 @@ export const Navbar = () => {
   return (
     <nav className='fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
       <ul className='flex items-center gap-4'>
+        <li>
+          <NavLink aria-label='Go to home' to='/'>
+            <figure>
+              <img className='h-9' src='/shopi.webp' alt='' />
+            </figure>
+          </NavLink>
+        </li>
         {menu1.map(({ name, path, className }) => (
           <li key={name}>
             <NavLink
+              aria-label={`View ${name.toLowerCase()} products`}
               to={path}
-              className={({ isActive }) =>
-                isActive && name !== 'Shopi' ? activeStyle : ''
-              }
+              className={({ isActive }) => (isActive ? activeStyle : '')}
             >
               <span className={className}>{name}</span>
             </NavLink>

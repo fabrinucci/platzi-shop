@@ -4,6 +4,7 @@ import { useShopi } from '../hooks'
 import { useEffect } from 'react'
 import { type Categories } from '../../types'
 import { useLocation } from 'react-router-dom'
+import { capitalizeWords } from '../utils'
 
 export const Home = () => {
   const { filteredProducts, loading, searchByTitle, selectCategory } =
@@ -28,7 +29,9 @@ export const Home = () => {
       <div className='mt-6 flex items-center justify-center'>
         <SearchBar />
       </div>
-      <h3 className='mb-5 mt-8 text-center text-2xl'>Our Special Products</h3>
+      <h3 className='mb-5 mt-8 text-center text-2xl'>
+        {path.length === 1 ? 'Our Special Products' : capitalizeWords(path)}
+      </h3>
       {loading && <SkeletonCards />}
 
       {filteredProducts.length === 0 && searchByTitle.length > 0 ? (
