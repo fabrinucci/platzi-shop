@@ -57,6 +57,11 @@ const menu2 = [
     path: '/sign-in',
     name: 'Sign In',
     className: ''
+  },
+  {
+    path: '/sign-up',
+    name: 'Sign Up',
+    className: ''
   }
 ]
 
