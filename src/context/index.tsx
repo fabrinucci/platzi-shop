@@ -1,11 +1,18 @@
 import { createContext, useState, type ReactNode } from 'react'
-import { useCart, useDetails, useOrders, useProducts } from '../hooks'
 import {
+  type User,
   type ProductCart,
   type Product,
   type Order,
   type Categories
 } from '../../types'
+import {
+  useAccount,
+  useCart,
+  useDetails,
+  useOrders,
+  useProducts
+} from '../hooks'
 
 interface ContextProps {
   children: ReactNode
@@ -39,6 +46,11 @@ export interface ShopiProps {
   currentPathname: string
   updatePathname: (pathname: string) => void
   category: Categories | 'all'
+  isInSession: boolean
+  updateSessionStatus: (value: boolean) => void
+  userValues: User
+  resetUserValues: () => void
+  signUpUser: (name: string, value: string) => void
 }
 
 export const ShopiContext = createContext<ShopiProps | null>(null)
@@ -53,6 +65,7 @@ export const ShopiProvider = ({ children }: ContextProps) => {
   const ordersContext = useOrders()
   const detailsContext = useDetails()
   const productsContext = useProducts()
+  const accountContext = useAccount()
 
   return (
     <ShopiContext.Provider
@@ -61,6 +74,7 @@ export const ShopiProvider = ({ children }: ContextProps) => {
         ...ordersContext,
         ...detailsContext,
         ...productsContext,
+        ...accountContext,
         currentPathname,
         updatePathname
       }}

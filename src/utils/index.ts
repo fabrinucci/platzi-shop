@@ -29,3 +29,10 @@ export const capitalizeWords = (word: string) => {
     .join(' ')
   return newWord
 }
+
+export const userInitialValues = {
+  fullname: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+}
