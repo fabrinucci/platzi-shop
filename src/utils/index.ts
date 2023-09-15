@@ -1,4 +1,4 @@
-import { type ProductCart } from '../../types'
+import { type User, type ProductCart } from '../../types'
 
 export const totalPrice = (products: ProductCart[]) => {
   const price = products.reduce(
@@ -30,7 +30,7 @@ export const capitalizeWords = (word: string) => {
   return newWord
 }
 
-export const userInitialValues = {
+export const userInitialValues: User = {
   fullname: '',
   email: '',
   password: '',

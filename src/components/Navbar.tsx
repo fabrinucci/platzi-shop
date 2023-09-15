@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import { ShoppingCartButton } from './'
 import { Categories } from '../../types'
+import { useShopi } from '../hooks'
 
 interface MenuProps {
   path: string
   name: string
   className: string
-  category?: Categories | null
 }
 
 const menu1: MenuProps[] = [
@@ -46,27 +46,36 @@ const menu2 = [
   {
     path: '/my-orders',
     name: 'My Orders',
-    className: ''
+    className: '',
+    session: true,
+    noSession: true
   },
   {
     path: '/my-account',
     name: 'My Account',
-    className: ''
+    className: '',
+    session: true,
+    noSession: false
   },
   {
     path: '/sign-in',
     name: 'Sign In',
-    className: ''
+    className: '',
+    session: false,
+    noSession: true
   },
   {
     path: '/sign-up',
     name: 'Sign Up',
-    className: ''
+    className: '',
+    session: false,
+    noSession: true
   }
 ]
 
 export const Navbar = () => {
   const activeStyle = 'underline underline-offset-4'
+  const { isInSession } = useShopi()
 
   return (
     <nav className='fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
@@ -92,16 +101,35 @@ export const Navbar = () => {
       </ul>
 
       <ul className='flex items-center gap-4'>
-        {menu2.map(({ name, path, className }) => (
-          <li key={name}>
-            <NavLink
-              to={path}
-              className={({ isActive }) => (isActive ? activeStyle : '')}
-            >
-              <span className={className}>{name}</span>
-            </NavLink>
-          </li>
-        ))}
+        {menu2.map((menu) => {
+          const { name, path, className, session, noSession } = menu
+          if (!isInSession && noSession) {
+            return (
+              <li key={name}>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) => (isActive ? activeStyle : '')}
+                >
+                  <span className={className}>{name}</span>
+                </NavLink>
+              </li>
+            )
+          }
+          if (isInSession && session) {
+            return (
+              <li key={name}>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) => (isActive ? activeStyle : '')}
+                >
+                  <span className={className}>{name}</span>
+                </NavLink>
+              </li>
+            )
+          }
+          return null
+        })}
+
         <li>
           <ShoppingCartButton />
         </li>

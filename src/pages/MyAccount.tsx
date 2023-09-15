@@ -1,33 +1,62 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
+import { useShopi } from '../hooks'
+import { type UserSignIn } from '../../types'
+
 export const MyAccount = () => {
+  const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate()
+  const { register } = useForm<UserSignIn>()
+  const { userValues, logOut } = useShopi()
+
+  const handleLogOut = () => {
+    logOut()
+    navigate('/sign-in')
+  }
+
   return (
     <section className='mt-8'>
-      <h3 className='text-center text-2xl'>Welcome</h3>
+      <h3 className='text-center text-2xl'>Welcome {userValues.fullname}</h3>
       <form className='m-auto mt-6 w-[460px] rounded-md bg-slate-300 px-8 py-12'>
         <div className='flex items-center justify-center gap-2'>
           <label className='text-left text-xl'>Email:</label>
           <input
+            {...register('email', {
+              value: userValues.email
+            })}
             className='w-full rounded-md px-3 py-2 text-lg'
             disabled
             type='email'
-            id='email'
-            value={'midf5e1f4fefeefmu@email.com'}
           />
-          <button className='font-semibold text-blue-800'>Update email</button>
         </div>
         <div className='mt-4 flex items-center justify-center gap-2'>
           <label className='text-xl'>Password:</label>
-          <input
-            className='w-full rounded-md px-3 py-2 text-lg'
-            disabled
-            type='password'
-            id='password'
-            value='********'
-          />
-          <button className='font-semibold text-blue-800'>
-            Change password
-          </button>
+          <div className='relative w-full'>
+            <input
+              {...register('password', {
+                value: userValues.password
+              })}
+              className='w-full rounded-md px-3 py-2 text-lg'
+              disabled
+              type={showPassword ? 'text' : 'password'}
+            />
+            <button
+              className='absolute right-3 top-3 w-6'
+              onClick={(e) => {
+                e.preventDefault()
+                setShowPassword(!showPassword)
+              }}
+            >
+              {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+            </button>
+          </div>
         </div>
-        <button className='mt-6 w-full rounded-md border-2 border-blue-800 py-4 text-lg font-semibold text-blue-800 hover:border-transparent hover:bg-blue-950 hover:text-white hover:transition-colors'>
+        <button
+          onClick={handleLogOut}
+          className='mt-6 w-full rounded-md border-2 border-blue-800 py-4 text-lg font-semibold text-blue-800 hover:border-transparent hover:bg-blue-950 hover:text-white hover:transition-colors'
+        >
           Log out
         </button>
       </form>

@@ -65,3 +65,6 @@ export interface User {
   password: string
   confirmPassword: string
 }
+
+export interface UserSignIn
+  extends Omit<User, 'fullname' | 'confirmPassword'> {}

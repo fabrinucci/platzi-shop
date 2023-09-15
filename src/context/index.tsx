@@ -4,7 +4,8 @@ import {
   type ProductCart,
   type Product,
   type Order,
-  type Categories
+  type Categories,
+  type UserSignIn
 } from '../../types'
 import {
   useAccount,
@@ -47,10 +48,11 @@ export interface ShopiProps {
   updatePathname: (pathname: string) => void
   category: Categories | 'all'
   isInSession: boolean
-  updateSessionStatus: (value: boolean) => void
   userValues: User
-  resetUserValues: () => void
-  signUpUser: (name: string, value: string) => void
+  signIn: (userValues: UserSignIn) => void
+  signUp: (userValues: User) => void
+  logOut: () => void
+  users: User[]
 }
 
 export const ShopiContext = createContext<ShopiProps | null>(null)
