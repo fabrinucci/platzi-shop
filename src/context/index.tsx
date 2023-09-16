@@ -52,6 +52,7 @@ export interface ShopiProps {
   signIn: (userValues: UserSignIn) => void
   signUp: (userValues: User) => void
   logOut: () => void
+  deleteAccount: (userValues: User) => void
   users: User[]
 }
 

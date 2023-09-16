@@ -28,12 +28,20 @@ export const useAccount = () => {
     setUserValues(userInitialValues)
   }
 
+  const deleteAccount = (userValues: User) => {
+    const newUsers = users.filter((user) => user.email !== userValues.email)
+    setUsers(newUsers)
+    setIsInSession(false)
+    setUserValues(userInitialValues)
+  }
+
   return {
     users,
     userValues,
     isInSession,
     signUp,
     signIn,
-    logOut
+    logOut,
+    deleteAccount
   }
 }

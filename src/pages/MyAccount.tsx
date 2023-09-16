@@ -9,7 +9,13 @@ export const MyAccount = () => {
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
   const { register } = useForm<UserSignIn>()
-  const { userValues, logOut } = useShopi()
+  const { userValues, logOut, deleteAccount, users } = useShopi()
+  console.log(users)
+
+  const handleDeleteAccount = () => {
+    deleteAccount(userValues)
+    navigate('/sign-in')
+  }
 
   const handleLogOut = () => {
     logOut()
@@ -58,6 +64,15 @@ export const MyAccount = () => {
           className='mt-6 w-full rounded-md border-2 border-blue-800 py-4 text-lg font-semibold text-blue-800 hover:border-transparent hover:bg-blue-950 hover:text-white hover:transition-colors'
         >
           Log out
+        </button>
+        <span className='mt-6 block bg-red-300 p-4 font-semibold text-red-800'>
+          Warning: Danger zone
+        </span>
+        <button
+          onClick={handleDeleteAccount}
+          className='mt-3 w-full rounded-md border-2 border-red-600 py-4 text-lg font-semibold text-red-600 hover:border-transparent hover:bg-red-700 hover:text-white hover:transition-colors'
+        >
+          Delete Account
         </button>
       </form>
     </section>
