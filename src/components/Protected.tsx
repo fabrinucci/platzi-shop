@@ -4,13 +4,15 @@ import { useShopi } from '../hooks'
 
 interface ProtectedProps {
   children: ReactNode
+  type: 'user' | 'no-user'
 }
 
-export const Protected = ({ children }: ProtectedProps) => {
+export const Protected = ({ children, type }: ProtectedProps) => {
   const { isInSession } = useShopi()
+  console.log(isInSession)
 
-  if (!isInSession) {
-    return <Navigate to='/' replace />
-  }
+  if (!isInSession && type === 'user') return <Navigate to='/' replace />
+  if (isInSession && type === 'no-user') return <Navigate to='/' replace />
+
   return children
 }

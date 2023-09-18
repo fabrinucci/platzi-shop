@@ -9,8 +9,7 @@ export const MyAccount = () => {
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
   const { register } = useForm<UserSignIn>()
-  const { userValues, logOut, deleteAccount, users } = useShopi()
-  console.log(users)
+  const { userValues, logOut, deleteAccount } = useShopi()
 
   const handleDeleteAccount = () => {
     deleteAccount(userValues)

@@ -19,13 +19,28 @@ export const AppRoutes = () => {
     {
       path: '/my-account',
       element: (
-        <Protected>
+        <Protected type='user'>
           <MyAccount />
         </Protected>
       )
     },
-    { path: '/sign-in', element: <SignIn /> },
-    { path: '/sign-up', element: <SignUp /> },
+    {
+      path: '/sign-in',
+      element: (
+        <Protected type='no-user'>
+          <SignIn />
+        </Protected>
+      )
+    },
+    {
+      path: '/sign-up',
+      element: (
+        <Protected type='no-user'>
+          <SignUp />
+        </Protected>
+      )
+    },
+
     { path: '/*', element: <NotFound /> }
   ])
   return routes
