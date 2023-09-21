@@ -1,139 +1,62 @@
-import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 import { ShoppingCartButton } from './'
-import { Categories } from '../../types'
-import { useShopi } from '../hooks'
-
-interface MenuProps {
-  path: string
-  name: string
-  className: string
-}
-
-const menu1: MenuProps[] = [
-  {
-    path: '/',
-    name: 'All',
-    className: 'font-semibold text-xl'
-  },
-  {
-    path: `/category/${Categories.Smartphones}`,
-    name: 'Smartphones',
-    className: ''
-  },
-  {
-    path: `/category/${Categories.Fragrances}`,
-    name: 'Fragrances',
-    className: ''
-  },
-  {
-    path: `/category/${Categories.Laptops}`,
-    name: 'Laptops',
-    className: ''
-  },
-  {
-    path: `/category/${Categories.MensShirts}`,
-    name: 'Mens Shirts',
-    className: ''
-  },
-  {
-    path: `/category/${Categories.Tops}`,
-    name: 'Tops',
-    className: ''
-  }
-]
-
-const menu2 = [
-  {
-    path: '/my-orders',
-    name: 'My Orders',
-    className: '',
-    session: true,
-    noSession: true
-  },
-  {
-    path: '/my-account',
-    name: 'My Account',
-    className: '',
-    session: true,
-    noSession: false
-  },
-  {
-    path: '/sign-in',
-    name: 'Sign In',
-    className: '',
-    session: false,
-    noSession: true
-  },
-  {
-    path: '/sign-up',
-    name: 'Sign Up',
-    className: '',
-    session: false,
-    noSession: true
-  }
-]
+import { Bars3Icon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { CategoriesMenu } from './CategoriesMenu'
+import { AccountMenu } from './AccountMenu'
 
 export const Navbar = () => {
-  const activeStyle = 'underline underline-offset-4'
-  const { isInSession } = useShopi()
+  const [toggleMenu, setToggleMenu] = useState(false)
+  const [toggleAccount, setToggleAccount] = useState(false)
 
   return (
     <nav className='fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-400 bg-slate-100 px-6 py-4'>
-      <ul className='flex items-center gap-4'>
-        <li>
-          <NavLink aria-label='Go to home' to='/'>
-            <figure>
-              <img className='h-9' src='/shopi.webp' alt='' />
-            </figure>
-          </NavLink>
-        </li>
-        {menu1.map(({ name, path, className }) => (
-          <li key={name}>
-            <NavLink
-              aria-label={`View ${name.toLowerCase()} products`}
-              to={path}
-              className={({ isActive }) => (isActive ? activeStyle : '')}
-            >
-              <span className={className}>{name}</span>
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      <button
+        className='cursor-pointer lg:hidden'
+        onClick={() => {
+          setToggleAccount(false)
+          setToggleMenu(!toggleMenu)
+        }}
+      >
+        <Bars3Icon className='w-8' />
+      </button>
 
-      <ul className='flex items-center gap-4'>
-        {menu2.map((menu) => {
-          const { name, path, className, session, noSession } = menu
-          if (!isInSession && noSession) {
-            return (
-              <li key={name}>
-                <NavLink
-                  to={path}
-                  className={({ isActive }) => (isActive ? activeStyle : '')}
-                >
-                  <span className={className}>{name}</span>
-                </NavLink>
-              </li>
-            )
-          }
-          if (isInSession && session) {
-            return (
-              <li key={name}>
-                <NavLink
-                  to={path}
-                  className={({ isActive }) => (isActive ? activeStyle : '')}
-                >
-                  <span className={className}>{name}</span>
-                </NavLink>
-              </li>
-            )
-          }
-          return null
-        })}
+      <aside
+        className={`${
+          toggleMenu ? 'flex' : 'hidden'
+        } fixed left-0 top-16 z-10 h-80 w-36 items-center justify-center rounded-sm border-2 border-l-0 border-gray-400 bg-slate-100 duration-300 ease-in sm:w-52 lg:hidden`}
+      >
+        <CategoriesMenu />
+      </aside>
 
-        <li>
-          <ShoppingCartButton />
-        </li>
-      </ul>
+      <section className='hidden lg:block'>
+        <CategoriesMenu />
+      </section>
+
+      <button
+        className='cursor-pointer sm:hidden'
+        onClick={() => {
+          setToggleMenu(false)
+          setToggleAccount(!toggleAccount)
+        }}
+      >
+        <UserCircleIcon className='w-8' />
+      </button>
+
+      <section className='flex gap-4'>
+        <aside
+          className={`${
+            toggleAccount ? 'flex' : 'hidden'
+          } fixed left-[50%] top-16 z-10 h-40 w-32 -translate-x-[50%] items-center justify-center rounded-sm border-2 border-gray-400 bg-slate-100 duration-300 ease-in sm:hidden`}
+        >
+          <AccountMenu />
+        </aside>
+
+        <section className='hidden sm:block'>
+          <AccountMenu />
+        </section>
+
+        <ShoppingCartButton />
+      </section>
     </nav>
   )
 }

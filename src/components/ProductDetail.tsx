@@ -9,7 +9,7 @@ export const ProductDetail = () => {
     <aside
       className={`${
         isOpenDetail ? 'flex' : 'hidden'
-      } fixed right-0 top-[69px] z-10 h-full w-[300px] flex-col items-center overflow-auto rounded-sm border-x-2 border-gray-400 bg-slate-100 px-8 pb-20 pt-4`}
+      } fixed right-0 top-[60px] z-10 h-full w-[300px] flex-col items-center overflow-auto rounded-sm border-x-2 border-gray-400 bg-slate-100 px-8 pb-20 pt-4`}
     >
       <div className='flex w-full items-center justify-between'>
         <h3 className='text-2xl'>Detail</h3>

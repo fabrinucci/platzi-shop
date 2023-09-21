@@ -24,12 +24,14 @@ export const OrderCard = ({ product, type }: Props) => {
         <img className='h-16 w-16' src={images[0]} alt={title} />
       </figure>
       <h4>{title?.slice(0, 16)}</h4>
-      <p className='font-semibold'>
-        ${Math.round(price * quantity * 100) / 100}
-      </p>
-      <div className='flex gap-1'>
-        <h4>qty:</h4>
-        <p>{quantity}</p>
+      <div className='flex flex-col gap-2 sm:flex-row sm:gap-4'>
+        <p className='font-semibold'>
+          ${Math.round(price * quantity * 100) / 100}
+        </p>
+        <div className='flex gap-1'>
+          <h4>qty:</h4>
+          <p>{quantity}</p>
+        </div>
       </div>
       {type === 'Cart' && (
         <button
