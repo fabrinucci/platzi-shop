@@ -9,7 +9,6 @@ interface ProtectedProps {
 
 export const Protected = ({ children, type }: ProtectedProps) => {
   const { isInSession } = useShopi()
-  console.log(isInSession)
 
   if (!isInSession && type === 'user') return <Navigate to='/' replace />
   if (isInSession && type === 'no-user') return <Navigate to='/' replace />

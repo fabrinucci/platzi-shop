@@ -11,7 +11,7 @@ export const MyOrders = () => {
   const noOrders = orders.length === 0
 
   return (
-    <section className='relative m-auto mt-8 w-[360px]'>
+    <section className='relative m-auto mt-8'>
       <h3 className='text-center text-2xl'>My orders</h3>
       {noOrders ? (
         <h4 className='mt-5 text-center text-lg'>No orders added</h4>
@@ -19,7 +19,7 @@ export const MyOrders = () => {
         <div className='mt-4 flex flex-col items-center justify-center gap-3'>
           {orders.map((order) => (
             <div
-              className='m-auto w-[360px] rounded-md border border-gray-900 px-6 py-4'
+              className='m-auto w-[300px] rounded-md border border-gray-900 px-6 py-4 sm:w-[360px]'
               key={order.id}
             >
               <div className='flex items-center justify-between'>

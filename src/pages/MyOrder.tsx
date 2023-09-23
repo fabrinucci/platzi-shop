@@ -12,14 +12,14 @@ export const MyOrder = () => {
   const order = selectedOrder(orderId!)
 
   return (
-    <section className='relative m-auto mt-8 w-[360px]'>
+    <section className='relative m-auto mt-8'>
       <div className='mb-4'>
         <Link to='/my-orders'>
           <ArrowLeftCircleIcon className='absolute top-[5px] w-6' />
         </Link>
         <h3 className='text-center text-2xl'>My order</h3>
       </div>
-      <div className='flex flex-col items-center justify-center'>
+      <div className='flex w-[260px] flex-col items-center justify-center sm:w-[360px]'>
         {order?.products.map((product) => (
           <OrderCard key={product.id} product={product} type='Order' />
         ))}

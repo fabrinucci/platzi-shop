@@ -39,7 +39,7 @@ export const SignIn = () => {
       <h3 className='text-center text-2xl'>Sign In</h3>
       <form
         onSubmit={onSubmit}
-        className='m-auto mt-6 w-[460px] rounded-md bg-slate-300 px-8 py-12'
+        className='m-auto mt-6 w-[90%] rounded-md bg-slate-300 px-4 py-6 sm:w-[460px] sm:px-8 sm:py-12'
       >
         {
           <span className='mb-3 block text-center text-lg text-red-600'>
@@ -100,7 +100,7 @@ export const SignIn = () => {
         <button className='mt-6 w-full rounded-md bg-blue-800 py-4 text-lg font-semibold text-gray-100 hover:bg-blue-950 hover:transition-colors'>
           Log in
         </button>
-        <div className='mt-6 flex gap-2'>
+        <div className='mt-6 flex flex-col gap-2 min-[350px]:flex-row'>
           <h5 className='text-lg'>{"Don't have an account?"}</h5>
           <Link className='text-lg font-semibold text-blue-800' to='/sign-up'>
             Sign up
