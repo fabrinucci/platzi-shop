@@ -15,7 +15,14 @@ export const AppRoutes = () => {
     { path: '/', element: <Home /> },
     { path: '/category/:category', element: <Home /> },
     { path: '/my-orders', element: <MyOrders /> },
-    { path: '/my-orders/:id', element: <MyOrder /> },
+    {
+      path: '/my-orders/:id',
+      element: (
+        <Protected type='order'>
+          <MyOrder />
+        </Protected>
+      )
+    },
     {
       path: '/my-account',
       element: (
