@@ -39,7 +39,13 @@ export const CategoriesMenu = () => {
   return (
     <ul className='flex flex-col gap-4 lg:flex-row lg:items-center'>
       <li className='hidden lg:block'>
-        <NavLink to='/' aria-label='Go to home'>
+        <NavLink
+          to='/'
+          aria-label='Go to home'
+          onClick={() => {
+            window.scrollTo(0, 0)
+          }}
+        >
           <figure>
             <img className='w-8' src='/shopi.webp' alt='' />
           </figure>
@@ -51,6 +57,9 @@ export const CategoriesMenu = () => {
             className={({ isActive }) => (isActive ? activeStyle : '')}
             aria-label={`View ${name.toLowerCase()} products`}
             to={path}
+            onClick={() => {
+              window.scrollTo(0, 0)
+            }}
           >
             <span className={className}>{name}</span>
           </NavLink>

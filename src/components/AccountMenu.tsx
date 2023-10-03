@@ -46,6 +46,9 @@ export const AccountMenu = () => {
               <NavLink
                 to={path}
                 className={({ isActive }) => (isActive ? activeStyle : '')}
+                onClick={() => {
+                  window.scrollTo(0, 0)
+                }}
               >
                 <span className={className}>{name}</span>
               </NavLink>
@@ -58,6 +61,9 @@ export const AccountMenu = () => {
               <NavLink
                 to={path}
                 className={({ isActive }) => (isActive ? activeStyle : '')}
+                onClick={() => {
+                  window.scrollTo(0, 0)
+                }}
               >
                 <span className={className}>{name}</span>
               </NavLink>

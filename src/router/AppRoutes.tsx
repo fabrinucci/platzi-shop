@@ -8,7 +8,7 @@ import {
   SignIn,
   SignUp
 } from '../pages'
-import { Protected } from '../components/Protected'
+import { AboutUs, FAQ, Protected } from '../components'
 
 export const AppRoutes = () => {
   const routes = useRoutes([
@@ -48,6 +48,8 @@ export const AppRoutes = () => {
       )
     },
 
+    { path: '/about', element: <AboutUs /> },
+    { path: '/faq', element: <FAQ /> },
     { path: '/*', element: <NotFound /> }
   ])
   return routes
