@@ -1,45 +1,35 @@
-import { NavLink } from 'react-router-dom'
-import { Categories } from '../../types'
+import { Link } from 'react-router-dom'
+import { Decoration, Electronics, Mens, Others, Womens } from '../../types'
+import { addSpaceToCamelCase, convertToKebabCase } from '../utils'
 
-const menu1 = [
+const menu = [
   {
-    path: '/',
-    name: 'All',
-    className: 'font-semibold text-xl'
+    name: 'Electronics',
+    categories: Object.keys(Electronics)
   },
   {
-    path: `/category/${Categories.Smartphones}`,
-    name: 'Smartphones',
-    className: ''
+    name: 'Mens',
+    categories: Object.keys(Mens)
   },
   {
-    path: `/category/${Categories.Fragrances}`,
-    name: 'Fragrances',
-    className: ''
+    name: 'Womens',
+    categories: Object.keys(Womens)
   },
   {
-    path: `/category/${Categories.Laptops}`,
-    name: 'Laptops',
-    className: ''
+    name: 'Decoration',
+    categories: Object.keys(Decoration)
   },
   {
-    path: `/category/${Categories.MensShirts}`,
-    name: 'Mens Shirts',
-    className: ''
-  },
-  {
-    path: `/category/${Categories.Tops}`,
-    name: 'Tops',
-    className: ''
+    name: 'Others',
+    categories: Object.keys(Others)
   }
 ]
 
 export const CategoriesMenu = () => {
-  const activeStyle = 'underline underline-offset-8 lg:underline-offset-4'
   return (
-    <ul className='flex flex-col gap-4 lg:flex-row lg:items-center'>
+    <ul className='flex flex-col gap-4 sm:gap-8 lg:flex-row lg:items-center lg:gap-4'>
       <li className='hidden lg:block'>
-        <NavLink
+        <Link
           to='/'
           aria-label='Go to home'
           onClick={() => {
@@ -49,20 +39,32 @@ export const CategoriesMenu = () => {
           <figure>
             <img className='w-8' src='/shopi.webp' alt='' />
           </figure>
-        </NavLink>
+        </Link>
       </li>
-      {menu1.map(({ name, path, className }) => (
-        <li key={name}>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeStyle : '')}
-            aria-label={`View ${name.toLowerCase()} products`}
-            to={path}
-            onClick={() => {
-              window.scrollTo(0, 0)
-            }}
-          >
-            <span className={className}>{name}</span>
-          </NavLink>
+      {menu.map(({ name, categories }) => (
+        <li
+          className='group cursor-pointer transition-all duration-500'
+          key={name}
+          aria-label={`View ${name.toLowerCase()} products`}
+        >
+          <span className='block'>{name}</span>
+          {categories && (
+            <ul className='absolute left-[7.5rem] hidden w-[160px] -translate-y-4 flex-col gap-2 rounded-md bg-blue-500 px-2 py-6 text-white transition-all duration-500 group-hover:flex sm:left-[9rem] lg:left-auto lg:top-11 lg:w-auto lg:translate-y-0'>
+              {categories.map((category) => (
+                <li
+                  className='rounded-sm p-1 transition-all duration-300 lg:hover:bg-blue-700'
+                  key={category}
+                >
+                  <Link
+                    className='block'
+                    to={`/category/${convertToKebabCase(category)}`}
+                  >
+                    {addSpaceToCamelCase(category)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
     </ul>

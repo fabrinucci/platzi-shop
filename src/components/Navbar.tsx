@@ -23,7 +23,7 @@ export const Navbar = () => {
       <aside
         className={`${
           toggleMenu ? 'flex' : 'hidden'
-        } fixed left-0 top-16 z-10 h-80 w-36 items-center justify-center rounded-sm border-2 border-l-0 border-gray-400 bg-slate-100 duration-300 ease-in sm:w-52 lg:hidden`}
+        } fixed left-0 top-16 z-10 h-80 w-36 items-center justify-center rounded-sm border-2 border-l-0 border-gray-400 bg-slate-100 duration-300 ease-in sm:h-[400px] sm:w-48 lg:hidden`}
       >
         <CategoriesMenu />
       </aside>

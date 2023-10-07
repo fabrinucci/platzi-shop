@@ -35,23 +35,55 @@ export enum Categories {
   Smartphones = 'smartphones',
   Laptops = 'laptops',
   Fragrances = 'fragrances',
-  Skincare = 'skincare',
-  Groceries = 'groceries',
-  HomeDecoration = 'home-decoration',
-  Furniture = 'furniture',
   Tops = 'tops',
-  WomensDresses = 'womens-dresses',
-  WomensShoes = 'womens-shoes',
+  HomeDecoration = 'home-decoration',
+  Groceries = 'groceries',
+  Skincare = 'skincare',
+  Furniture = 'furniture',
   MensShirts = 'mens-shirts',
   MensShoes = 'mens-shoes',
   MensWatches = 'mens-watches',
-  WomensWatches = 'womens-watches',
   WomensBags = 'womens-bags',
+  WomensDresses = 'womens-dresses',
+  WomensShoes = 'womens-shoes',
+  WomensWatches = 'womens-watches',
   WomensJewellery = 'womens-jewellery',
   Sunglasses = 'sunglasses',
   Automotive = 'automotive',
   Motorcycle = 'motorcycle',
-  Lightin = 'lighting'
+  Lighting = 'lighting'
+}
+
+export enum Electronics {
+  Smartphones = 'smartphones',
+  Laptops = 'laptops'
+}
+export enum Mens {
+  MensShirts = 'mens-shirts',
+  MensShoes = 'mens-shoes',
+  MensWatches = 'mens-watches'
+}
+
+export enum Womens {
+  Tops = 'tops',
+  WomensBags = 'womens-bags',
+  WomensDresses = 'womens-dresses',
+  WomensShoes = 'womens-shoes',
+  WomensWatches = 'womens-watches',
+  WomensJewellery = 'womens-jewellery'
+}
+
+export enum Decoration {
+  HomeDecoration = 'home-decoration',
+  Furniture = 'furniture',
+  Lighting = 'lighting'
+}
+
+export enum Others {
+  Skincare = 'skincare',
+  Automotive = 'automotive',
+  Motorcycle = 'motorcycle',
+  Sunglasses = 'sunglasses'
 }
 
 export interface Rating {

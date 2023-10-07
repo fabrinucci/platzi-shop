@@ -30,6 +30,38 @@ export const capitalizeWords = (word: string) => {
   return newWord
 }
 
+export const convertToKebabCase = (word: string) => {
+  let newWord = word.charAt(0).toLowerCase()
+
+  for (let i = 1; i < word.length; i++) {
+    const letter = word[i]
+
+    if (letter === letter.toUpperCase()) {
+      newWord += '-' + letter.toLowerCase()
+    } else {
+      newWord += letter
+    }
+  }
+
+  return newWord
+}
+
+export const addSpaceToCamelCase = (word: string) => {
+  let result = ''
+
+  for (let i = 0; i < word.length; i++) {
+    const letter = word[i]
+
+    if (letter === letter.toUpperCase() && i !== 0) {
+      result += ' '
+    }
+
+    result += letter
+  }
+
+  return result
+}
+
 export const userInitialValues: User = {
   fullname: '',
   email: '',
