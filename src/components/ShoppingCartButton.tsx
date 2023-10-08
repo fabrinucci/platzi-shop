@@ -2,13 +2,21 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { useShopi } from '../hooks/useShopi'
 
 export const ShoppingCartButton = () => {
-  const { count, isOpenCart, isOpenDetail, closeDetail, openCart, closeCart } =
-    useShopi()
+  const {
+    count,
+    isOpenCart,
+    closeAccount,
+    closeCategories,
+    closeDetail,
+    openCart,
+    closeCart
+  } = useShopi()
 
   const openCartAndCloseDetail = () => {
-    if (isOpenDetail) {
-      closeDetail()
-    }
+    closeAccount()
+    closeCategories()
+    closeDetail()
+
     openCart()
   }
 

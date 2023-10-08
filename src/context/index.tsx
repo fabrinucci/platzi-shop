@@ -10,7 +10,7 @@ import {
 import {
   useAccount,
   useCart,
-  useDetails,
+  useNavbar,
   useOrders,
   useProducts
 } from '../hooks'
@@ -23,6 +23,8 @@ export interface ShopiProps {
   count: number
   isOpenCart: boolean
   isOpenDetail: boolean
+  isOpenAccount: boolean
+  isOpenCategories: boolean
   productToShow: Product | {}
   cart: ProductCart[]
   quantity: number
@@ -31,6 +33,10 @@ export interface ShopiProps {
   closeCart: () => void
   openDetail: () => void
   closeDetail: () => void
+  openAccount: () => void
+  openCategories: () => void
+  closeAccount: () => void
+  closeCategories: () => void
   updateProductToShow: (product: Product) => void
   addToCart: (product: Product) => void
   removeFromCart: (product: ProductCart) => void
@@ -66,18 +72,18 @@ export const ShopiProvider = ({ children }: ContextProps) => {
 
   const cartContext = useCart()
   const ordersContext = useOrders()
-  const detailsContext = useDetails()
   const productsContext = useProducts()
   const accountContext = useAccount()
+  const navbarContext = useNavbar()
 
   return (
     <ShopiContext.Provider
       value={{
         ...cartContext,
         ...ordersContext,
-        ...detailsContext,
         ...productsContext,
         ...accountContext,
+        ...navbarContext,
         currentPathname,
         updatePathname
       }}

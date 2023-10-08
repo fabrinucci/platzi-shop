@@ -30,7 +30,7 @@ const FAQArr = [
   {
     question: 'Do you offer international shipping?',
     answer:
-      'Yes, at [Name of your eCommerce] we offer international shipping. During the checkout process, you will be able to select your destination country and see the shipping options available, as well as the associated costs.'
+      'Yes, at Shopi we offer international shipping. During the checkout process, you will be able to select your destination country and see the shipping options available, as well as the associated costs.'
   }
 ]
 
@@ -54,17 +54,19 @@ export const FAQ = () => {
         {FAQArr.map((faq, index) => (
           <div key={index} className='mt-2 border-b border-slate-300 pb-4'>
             <div
-              className='flex cursor-pointer items-center justify-between'
+              className='flex cursor-pointer items-start justify-between gap-3 lg:gap-0'
               onClick={() => {
                 toggleFAQ(index)
               }}
             >
               <h6 className='text-lg font-semibold'>{faq.question}</h6>
-              <ChevronUpIcon
-                className={`${
-                  isOpenQuestion[index] ? 'rotate-180' : ''
-                } w-5 transition-all duration-500`}
-              />
+              <div>
+                <ChevronUpIcon
+                  className={`${
+                    isOpenQuestion[index] ? 'rotate-180' : ''
+                  } w-5 transition-all duration-500`}
+                />
+              </div>
             </div>
             <div className='mt-2'>
               {isOpenQuestion[index] && <p>{faq.answer}</p>}

@@ -22,7 +22,7 @@ export const Cart = () => {
 
       {cart.length === 0 ? (
         <div className='mt-8'>
-          <h4 className='text-lg'>No products in cart</h4>
+          <h4 className='text-lg'>Your cart is empty</h4>
         </div>
       ) : (
         <div>

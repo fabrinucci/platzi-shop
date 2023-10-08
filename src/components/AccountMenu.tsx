@@ -33,7 +33,7 @@ const menu = [
 ]
 
 export const AccountMenu = () => {
-  const { isInSession } = useShopi()
+  const { isInSession, closeAccount } = useShopi()
   const activeStyle = 'underline underline-offset-4'
 
   return (
@@ -48,6 +48,7 @@ export const AccountMenu = () => {
                 className={({ isActive }) => (isActive ? activeStyle : '')}
                 onClick={() => {
                   window.scrollTo(0, 0)
+                  closeAccount()
                 }}
               >
                 <span className={className}>{name}</span>
@@ -63,6 +64,7 @@ export const AccountMenu = () => {
                 className={({ isActive }) => (isActive ? activeStyle : '')}
                 onClick={() => {
                   window.scrollTo(0, 0)
+                  closeAccount()
                 }}
               >
                 <span className={className}>{name}</span>

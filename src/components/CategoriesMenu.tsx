@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Decoration, Electronics, Mens, Others, Womens } from '../../types'
 import { addSpaceToCamelCase, convertToKebabCase } from '../utils'
+import { useShopi } from '../hooks'
 
 const menu = [
   {
@@ -26,6 +27,8 @@ const menu = [
 ]
 
 export const CategoriesMenu = () => {
+  const { closeCategories } = useShopi()
+
   return (
     <ul className='flex flex-col gap-4 sm:gap-8 lg:flex-row lg:items-center lg:gap-4'>
       <li className='hidden lg:block'>
@@ -39,6 +42,18 @@ export const CategoriesMenu = () => {
           <figure>
             <img className='w-8' src='/shopi.webp' alt='' />
           </figure>
+        </Link>
+      </li>
+      <li className='block lg:hidden'>
+        <Link
+          to='/'
+          aria-label='Go to home'
+          onClick={() => {
+            window.scrollTo(0, 0)
+            closeCategories()
+          }}
+        >
+          All
         </Link>
       </li>
       {menu.map(({ name, categories }) => (
@@ -56,6 +71,10 @@ export const CategoriesMenu = () => {
                   key={category}
                 >
                   <Link
+                    onClick={() => {
+                      window.scrollTo(0, 0)
+                      closeCategories()
+                    }}
                     className='block'
                     to={`/category/${convertToKebabCase(category)}`}
                   >

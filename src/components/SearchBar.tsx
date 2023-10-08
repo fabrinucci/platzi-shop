@@ -32,7 +32,7 @@ export const SearchBar = () => {
   }
 
   return (
-    <div className='relative h-[46px] w-[320px] overflow-hidden rounded-md border-2 border-slate-600'>
+    <div className='relative h-[46px] w-[300px] overflow-hidden rounded-md border-2 border-slate-600 sm:w-[360px]'>
       <button
         onClick={activateInput}
         className='absolute left-[8px] top-[10px] outline-none'

@@ -7,13 +7,20 @@ interface Props {
 }
 
 export const Cards = ({ products }: Props) => {
-  const { isOpenCart, closeCart, openDetail, updateProductToShow, addToCart } =
-    useShopi()
+  const {
+    openDetail,
+    closeAccount,
+    closeCategories,
+    closeCart,
+    updateProductToShow,
+    addToCart
+  } = useShopi()
 
   const showProduct = (product: Product) => {
-    if (isOpenCart) {
-      closeCart()
-    }
+    closeAccount()
+    closeCategories()
+    closeCart()
+
     openDetail()
     updateProductToShow(product)
   }
