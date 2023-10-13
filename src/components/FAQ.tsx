@@ -46,7 +46,7 @@ export const FAQ = () => {
   }
 
   return (
-    <div className='mx-auto mt-8 w-[80%] max-w-[628px]'>
+    <div className='mx-auto mt-6 w-[80%] max-w-[628px] lg:mt-14'>
       <div>
         <h4 className='text-center text-2xl'>Frequently Asked Questions</h4>
       </div>

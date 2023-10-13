@@ -12,7 +12,7 @@ export const MyOrder = () => {
   const order = selectedOrder(orderId!)
 
   return (
-    <section className='relative m-auto mt-8'>
+    <section className='relative m-auto mt-6 lg:mt-14'>
       <div className='mb-4'>
         <Link to='/my-orders'>
           <ArrowLeftCircleIcon className='absolute top-[5px] w-6' />

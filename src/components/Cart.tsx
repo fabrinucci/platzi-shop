@@ -11,7 +11,7 @@ export const Cart = () => {
     <aside
       className={`${
         isOpenCart ? 'flex' : 'hidden'
-      } fixed right-0 top-[60px] z-10 h-full w-[250px] flex-col items-center overflow-auto rounded-sm border-x-2 border-gray-400 bg-slate-100 p-4 pb-20 sm:w-[360px]`}
+      } fixed right-0 top-[80px] z-50 h-full w-[250px] flex-col items-center overflow-auto rounded-sm border-2 border-r-0 border-gray-400 bg-slate-100 p-4 pb-20 sm:w-[360px]`}
     >
       <div className='flex w-full items-center justify-between'>
         <h3 className='text-2xl'>Cart</h3>

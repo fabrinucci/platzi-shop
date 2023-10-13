@@ -11,7 +11,7 @@ export const MyOrders = () => {
   const noOrders = orders.length === 0
 
   return (
-    <section className='relative m-auto mt-8'>
+    <section className='relative m-auto mt-6 lg:mt-14'>
       <h3 className='text-center text-2xl'>My orders</h3>
       {noOrders ? (
         <h4 className='mt-5 text-center text-lg'>No orders added</h4>

@@ -51,7 +51,7 @@ const aboutArr = [
 
 export const AboutUs = () => {
   return (
-    <div className='mx-auto mt-8 w-[80%] max-w-[768px]'>
+    <div className='mx-auto mt-6 w-[80%] max-w-[768px] lg:mt-14'>
       <h4 className='text-center text-2xl'>About Us</h4>
       <div className='mt-8'>
         {aboutArr.map(({ title, description, values }, index) => (

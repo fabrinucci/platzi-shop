@@ -30,20 +30,7 @@ export const CategoriesMenu = () => {
   const { closeCategories } = useShopi()
 
   return (
-    <ul className='flex flex-col gap-4 sm:gap-8 lg:flex-row lg:items-center lg:gap-4'>
-      <li className='hidden lg:block'>
-        <Link
-          to='/'
-          aria-label='Go to home'
-          onClick={() => {
-            window.scrollTo(0, 0)
-          }}
-        >
-          <figure>
-            <img className='w-8' src='/shopi.webp' alt='' />
-          </figure>
-        </Link>
-      </li>
+    <ul className='flex flex-col gap-4 sm:gap-8 lg:relative lg:flex-row lg:items-center lg:justify-center lg:gap-12'>
       <li className='block lg:hidden'>
         <Link
           to='/'
@@ -64,7 +51,7 @@ export const CategoriesMenu = () => {
         >
           <span className='block'>{name}</span>
           {categories && (
-            <ul className='absolute left-[7.5rem] hidden w-[160px] -translate-y-4 flex-col gap-2 rounded-md bg-blue-500 px-2 py-6 text-white transition-all duration-500 group-hover:flex sm:left-[9rem] lg:left-auto lg:top-11 lg:w-auto lg:translate-y-0'>
+            <ul className='absolute left-[7.5rem] hidden w-[160px] -translate-y-4 flex-col gap-2 rounded-md bg-blue-500 px-2 py-6 text-white transition-all duration-500 group-hover:flex sm:left-[9rem] lg:left-auto lg:top-6 lg:w-auto lg:translate-y-0'>
               {categories.map((category) => (
                 <li
                   className='rounded-sm p-1 transition-all duration-300 lg:hover:bg-blue-700'

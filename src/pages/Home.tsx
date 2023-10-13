@@ -1,4 +1,4 @@
-import { Cards, SearchBar } from '../components'
+import { Cards } from '../components'
 import { SkeletonCards } from '../components/SkeletonCards'
 import { useShopi } from '../hooks'
 import { useEffect } from 'react'
@@ -31,9 +31,6 @@ export const Home = () => {
         <Slider />
       </section>
       <div className='sm:px-6'>
-        <section className='mt-6 flex items-center justify-center'>
-          <SearchBar />
-        </section>
         <section>
           <div>
             <h3 className='mb-5 mt-8 text-center text-2xl'>

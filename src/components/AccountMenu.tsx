@@ -37,7 +37,7 @@ export const AccountMenu = () => {
   const activeStyle = 'underline underline-offset-4'
 
   return (
-    <ul className='flex flex-col gap-4 sm:flex-row'>
+    <ul className='flex flex-col gap-4 lg:flex-row'>
       {menu.map((menu) => {
         const { name, path, className, session, noSession } = menu
         if (!isInSession && noSession) {

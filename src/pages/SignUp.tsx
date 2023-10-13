@@ -28,7 +28,7 @@ export const SignUp = () => {
   })
 
   return (
-    <section className='mt-8'>
+    <section className='mt-6 lg:mt-14'>
       <h3 className='text-center text-2xl'>Create Account</h3>
       <form
         onSubmit={onSubmit}

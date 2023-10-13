@@ -6,30 +6,30 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 const images = [
   {
     name: 'Fearsun',
-    srcMobile: '/src/assets/fearsun-mobile.webp',
-    srcLaptop: '/src/assets/fearsun-laptop.webp',
-    srcDesktop: '/src/assets/fearsun-desktop.webp',
+    mobile: 'fearsun-mobile',
+    laptop: 'fearsun-laptop',
+    desktop: 'fearsun-desktop',
     category: 'mens-shirts'
   },
   {
     name: 'Sneakpads',
-    srcMobile: '/src/assets/sneakpads-mobile.webp',
-    srcLaptop: '/src/assets/sneakpads-laptop.webp',
-    srcDesktop: '/src/assets/sneakpads-desktop.webp',
+    mobile: 'sneakpads-mobile',
+    laptop: 'sneakpads-laptop',
+    desktop: 'sneakpads-desktop',
     category: 'smartphones'
   },
   {
     name: 'MagicKey',
-    srcMobile: '/src/assets/magickey-mobile.webp',
-    srcLaptop: '/src/assets/magickey-laptop.webp',
-    srcDesktop: '/src/assets/magickey-desktop.webp',
+    mobile: 'magickey-mobile',
+    laptop: 'magickey-laptop',
+    desktop: 'magickey-desktop',
     category: 'womens-dresses'
   },
   {
     name: 'MRFetch',
-    srcMobile: '/src/assets/mrfetch-mobile.webp',
-    srcLaptop: '/src/assets/mrfetch-laptop.webp',
-    srcDesktop: '/src/assets/mrfetch-desktop.webp',
+    mobile: 'mrfetch-mobile',
+    laptop: 'mrfetch-laptop',
+    desktop: 'mrfetch-desktop',
     category: 'tops'
   }
 ]
@@ -65,6 +65,7 @@ const slideProperties = {
 
 export const Slider = () => {
   const navigate = useNavigate()
+  const imagePath = '/assets'
 
   return (
     <div className='slide-container'>
@@ -78,9 +79,19 @@ export const Slider = () => {
             key={index}
           >
             <picture>
-              <source media='(min-width:920px)' srcSet={img.srcDesktop} />
-              <source media='(min-width:520px)' srcSet={img.srcLaptop} />
-              <img className='w-full' src={img.srcMobile} alt={img.name} />
+              <source
+                media='(min-width:920px)'
+                srcSet={`${imagePath}/${img.desktop}.webp`}
+              />
+              <source
+                media='(min-width:520px)'
+                srcSet={`${imagePath}/${img.laptop}.webp`}
+              />
+              <img
+                className='w-full'
+                src={`${imagePath}/${img.mobile}.webp`}
+                alt={img.name}
+              />
             </picture>
           </div>
         ))}
