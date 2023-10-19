@@ -34,7 +34,7 @@ export const Cards = ({ products }: Props) => {
             key={id}
             className='max-w-[250px] rounded-sm border border-gray-400 p-6'
           >
-            <figure className='relative'>
+            <figure className='relative h-40 w-full rounded-md bg-slate-500'>
               <span className='absolute bottom-[12px] left-2 rounded-md bg-blue-600 p-1 text-sm font-bold text-slate-200 shadow-md shadow-[#7191cc]'>
                 {category}
               </span>
