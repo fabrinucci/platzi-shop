@@ -40,7 +40,7 @@ yarn install
 
 👤 **Fabrizio Nucci**
 
-- Website: [fabrinucci.github.io](fabrinucci.github.io)
+- Website: [fabrinucci.github.io](https://fabrinucci.github.io)
 - Github: [@fabrinucci](https://github.com/fabrinucci)
 - LinkedIn: [@fabrinucci](https://linkedin.com/in/fabrinucci)
 - Twitter: [@FabrizioDev](https://twitter.com/FabrizioDev)
